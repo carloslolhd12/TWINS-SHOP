@@ -3,350 +3,651 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Twins Shop - Mugs Personalizados</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Realismo 360 — Experiencias Reales</title>
+    <meta property="og:title" content="Realismo 360 — Experiencias Reales">
+    <meta property="og:description" content="Tours y experiencias auténticas en Colombia. ¡Reserva tu aventura!">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --purple: #7b2fff;
-            --purple2: #9d4edd;
-            --purple-dark: #3d0080;
-            --purple-glow: rgba(123, 47, 255, 0.35);
-            --dark: #080010;
-            --dark2: #0f0020;
-            --card: #130025;
-            --border: #2a0055;
-            --border2: #5a00aa;
-            --text: #e8d5ff;
-            --text2: #9066bb;
+            --azul:       #071E3D;
+            --azul2:      #132F5A;
+            --azul3:      #1A4080;
+            --azul-med:   #2255A4;
+            --azul-claro: #EBF1FB;
+            --oro:        #B8860B;
+            --oro2:       #D4A017;
+            --oro3:       #F0C040;
+            --bg:         #F4F7FB;
+            --card:       #FFFFFF;
+            --text:       #071E3D;
+            --text2:      #4A6080;
+            --border:     #D0DCEE;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: var(--dark);
+            background: var(--bg);
             color: var(--text);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Raleway', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: radial-gradient(ellipse at top, #1a0040 0%, #080010 60%);
+            display: flex; flex-direction: column; align-items: center;
         }
-
-        .pantalla { width: 100%; max-width: 480px; display: none; flex-direction: column; align-items: center; padding: 36px 24px 60px; }
+        .pantalla { width: 100%; max-width: 480px; display: none; flex-direction: column; align-items: center; padding: 0 0 80px; }
         .pantalla.activa { display: flex; }
 
-        /* CABECERA */
-        .cabecera { width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
-        .logo-nombre { font-family: 'Bebas Neue', cursive; font-size: 52px; letter-spacing: 10px; color: var(--purple); line-height: 1; text-shadow: 0 0 20px var(--purple-glow), 0 0 40px var(--purple-glow); }
-        .logo-nombre span { color: white; }
-        .logo-sub { font-size: 9px; font-weight: 400; letter-spacing: 5px; color: var(--text2); text-transform: uppercase; margin-top: 4px; }
-        .linea-deco { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--purple), transparent); margin-top: 16px; box-shadow: 0 0 8px var(--purple-glow); }
+        /* ─── HEADER ─── */
+        .header {
+            width: 100%;
+            background: linear-gradient(170deg, var(--azul) 0%, var(--azul2) 60%, var(--azul3) 100%);
+            padding: 36px 24px 30px;
+            display: flex; flex-direction: column; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .logo-wrap {
+            width: 88px; height: 88px; border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--oro2);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin-bottom: 16px; position: relative; z-index: 1;
+            box-shadow: 0 0 0 6px rgba(212,160,23,0.12);
+        }
+        .logo-wrap span { font-size: 34px; }
+        .logo-wrap p { font-size: 7px; color: var(--oro3); font-weight: 700; letter-spacing: 2px; margin-top: 2px; }
+        .header-brand {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800; font-size: 26px; letter-spacing: 8px;
+            color: white; text-align: center;
+            position: relative; z-index: 1;
+        }
+        .header-brand span { color: var(--oro3); }
+        .header-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; font-size: 15px; font-weight: 400;
+            color: rgba(255,255,255,0.55); letter-spacing: 2px;
+            margin-top: 5px; position: relative; z-index: 1;
+        }
+        .header-divider {
+            width: 48px; height: 1px;
+            background: linear-gradient(to right, transparent, var(--oro2), transparent);
+            margin: 14px auto 0; position: relative; z-index: 1;
+        }
 
-        /* TÍTULOS */
-        .titulo-pantalla { font-family: 'Bebas Neue', cursive; font-size: 24px; letter-spacing: 5px; color: var(--purple2); text-align: center; margin-bottom: 4px; }
-        .subtitulo-pantalla { font-size: 9px; font-weight: 400; letter-spacing: 3px; color: var(--text2); text-transform: uppercase; text-align: center; margin-bottom: 20px; }
+        /* ─── STICKY HEADER ─── */
+        .sticky-top {
+            position: sticky; top: 0; z-index: 100;
+            width: 100%;
+            background: rgba(7,30,61,0.97);
+            backdrop-filter: blur(12px);
+            padding: 11px 16px;
+            display: flex; align-items: center; gap: 12px;
+            border-bottom: 1px solid rgba(212,160,23,0.25);
+        }
+        .back-btn {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            color: white; width: 36px; height: 36px; border-radius: 8px;
+            font-size: 16px; cursor: pointer; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .back-btn:active { background: var(--oro2); border-color: var(--oro2); }
+        .sticky-name {
+            font-family: 'Raleway', sans-serif; font-weight: 700;
+            font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+            color: white; flex: 1;
+        }
+        .btn-ws-top {
+            background: #25D366; border: none; color: white;
+            padding: 8px 14px; border-radius: 8px;
+            font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: 1px; cursor: pointer; white-space: nowrap;
+        }
 
-        /* GRID CATEGORÍAS MENÚ */
-        .grid-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-bottom: 28px; }
-        .tarjeta-cat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
-        .tarjeta-cat:active { border-color: var(--purple); box-shadow: 0 0 16px var(--purple-glow); }
-        .tarjeta-cat.proximamente { opacity: 0.3; cursor: default; }
-        .cat-imagen { width: 100%; height: 130px; background: var(--dark2); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); font-size: 48px; overflow: hidden; }
-        .cat-imagen img { width: 100%; height: 100%; object-fit: cover; }
-        .cat-info { padding: 12px 10px; text-align: center; }
-        .cat-nombre { font-family: 'Bebas Neue', cursive; font-size: 13px; letter-spacing: 2px; color: var(--purple2); display: block; margin-bottom: 4px; }
-        .cat-desc { font-size: 8px; font-weight: 400; letter-spacing: 1px; color: var(--text2); text-transform: uppercase; line-height: 1.6; }
-        .cat-badge { display: inline-block; margin-top: 6px; background: var(--purple-dark); border: 1px solid var(--border2); color: var(--purple2); font-family: 'Bebas Neue', cursive; font-size: 12px; letter-spacing: 2px; padding: 3px 10px; border-radius: 4px; }
+        /* ─── INTRO BANNER ─── */
+        .intro-banner {
+            width: calc(100% - 32px); margin: 18px 16px 0;
+            background: linear-gradient(135deg, var(--azul2) 0%, var(--azul3) 100%);
+            border-radius: 16px; padding: 22px;
+            display: flex; gap: 16px; align-items: center;
+            box-shadow: 0 8px 30px rgba(7,30,61,0.18);
+            position: relative; overflow: hidden;
+        }
+        .intro-banner::after {
+            content: '✈️';
+            position: absolute; font-size: 80px; opacity: 0.08;
+            right: 8px; bottom: -8px;
+        }
+        .intro-icon { font-size: 44px; flex-shrink: 0; }
+        .intro-title {
+            font-family: 'Raleway', sans-serif; font-weight: 800;
+            font-size: 15px; color: white; margin-bottom: 5px;
+        }
+        .intro-text {
+            font-size: 11px; color: rgba(255,255,255,0.7);
+            font-weight: 400; line-height: 1.65;
+        }
 
-        /* FOTO TODOS LOS COLORES */
-        .foto-colores { width: 100%; border-radius: 10px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 18px; }
-        .foto-colores img { width: 100%; display: block; }
-        .colores-label { width: 100%; text-align: center; font-size: 9px; letter-spacing: 3px; color: var(--text2); text-transform: uppercase; margin-bottom: 16px; }
+        /* ─── SECCIÓN HEADER ─── */
+        .section-head { width: 100%; padding: 26px 16px 14px; }
+        .section-label {
+            font-size: 9px; font-weight: 700; letter-spacing: 4px;
+            color: var(--oro2); text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px; margin-bottom: 5px;
+        }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px; font-weight: 600; color: var(--azul); line-height: 1;
+        }
 
-        /* GRID COLORES */
-        .grid-colores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 24px; }
-        .tarjeta-color { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
-        .tarjeta-color:active { border-color: var(--purple); box-shadow: 0 0 14px var(--purple-glow); }
-        .tarjeta-color.sin-ejemplo { opacity: 0.6; }
-        .color-foto { width: 100%; height: 130px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
-        .color-foto img { width: 100%; height: 100%; object-fit: cover; }
-        .color-foto-placeholder { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-        .color-foto-placeholder span { font-size: 32px; }
-        .color-foto-placeholder p { font-size: 8px; letter-spacing: 2px; color: var(--text2); text-transform: uppercase; }
-        .color-info { padding: 10px; text-align: center; }
-        .color-nombre { font-family: 'Bebas Neue', cursive; font-size: 15px; letter-spacing: 3px; display: block; margin-bottom: 3px; }
-        .color-detalle { font-size: 8px; font-weight: 400; letter-spacing: 1px; color: var(--text2); text-transform: uppercase; }
-        .color-precio { display: inline-block; margin-top: 5px; background: var(--purple-dark); border: 1px solid var(--border2); color: var(--purple2); font-family: 'Bebas Neue', cursive; font-size: 12px; letter-spacing: 1px; padding: 2px 8px; border-radius: 4px; }
+        /* ─── GRID DE DESTINOS ─── */
+        .destinos-grid {
+            width: calc(100% - 32px); margin: 0 16px;
+            display: flex; flex-direction: column; gap: 14px;
+        }
 
-        /* DETALLE */
-        .detalle-foto { width: 100%; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 16px; }
-        .detalle-foto img { width: 100%; display: block; }
-        .detalle-card { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
-        .detalle-card-titulo { font-family: 'Bebas Neue', cursive; font-size: 15px; letter-spacing: 3px; color: var(--purple2); margin-bottom: 8px; }
-        .detalle-card-txt { font-size: 11px; font-weight: 300; line-height: 1.7; color: var(--text2); }
-        .detalle-precio { display: inline-block; margin-top: 10px; background: var(--purple-dark); border: 1px solid var(--border2); color: var(--purple2); font-family: 'Bebas Neue', cursive; font-size: 16px; letter-spacing: 2px; padding: 5px 14px; border-radius: 4px; }
+        /* Tarjeta destino activo */
+        .destino-card {
+            background: var(--card); border-radius: 16px;
+            overflow: hidden; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(7,30,61,0.10);
+            border: 1px solid var(--border);
+            transition: transform 0.15s;
+        }
+        .destino-card:active { transform: scale(0.98); }
+        .destino-foto {
+            width: 100%; height: 200px; position: relative; overflow: hidden;
+        }
+        .destino-foto img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+        }
+        .destino-foto-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 35%, rgba(7,30,61,0.88) 100%);
+        }
+        .destino-foto-content {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 14px 18px;
+        }
+        .destino-tipo {
+            display: inline-block; background: var(--oro2); color: white;
+            font-size: 8px; font-weight: 700; letter-spacing: 2px;
+            padding: 3px 9px; border-radius: 3px; margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .destino-nombre {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; font-weight: 700; color: white; line-height: 1.1;
+        }
+        .destino-lugar {
+            font-size: 10px; color: rgba(255,255,255,0.7);
+            font-weight: 400; margin-top: 3px; letter-spacing: 1px;
+        }
+        .destino-footer {
+            padding: 14px 18px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .destino-precio-label { font-size: 9px; color: var(--text2); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .destino-precio-valor {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px; font-weight: 700; color: var(--azul); line-height: 1;
+        }
+        .btn-ver {
+            background: var(--azul); color: white;
+            padding: 9px 16px; border-radius: 8px;
+            font-family: 'Raleway', sans-serif; font-size: 11px;
+            font-weight: 700; letter-spacing: 1px; border: none; cursor: pointer;
+        }
 
-        /* INSTRUCCIONES */
-        .instrucciones { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-        .instruccion { display: flex; align-items: flex-start; gap: 12px; }
-        .instruccion-num { font-family: 'Bebas Neue', cursive; font-size: 26px; color: var(--purple); line-height: 1; flex-shrink: 0; text-shadow: 0 0 8px var(--purple-glow); }
-        .instruccion-info { display: flex; flex-direction: column; gap: 2px; padding-top: 4px; }
-        .instruccion-titulo { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--text); text-transform: uppercase; }
-        .instruccion-desc { font-size: 10px; font-weight: 300; color: var(--text2); line-height: 1.5; }
+        /* Tarjeta próximamente */
+        .destino-pronto {
+            background: var(--card); border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(7,30,61,0.06);
+            border: 1px dashed var(--border);
+        }
+        .destino-pronto-foto {
+            width: 100%; height: 160px; position: relative; overflow: hidden;
+        }
+        .destino-pronto-foto img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            filter: brightness(0.5) saturate(0.6);
+        }
+        .pronto-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            background: rgba(7,30,61,0.5);
+            gap: 6px;
+        }
+        .pronto-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white; font-size: 9px; font-weight: 700;
+            letter-spacing: 3px; padding: 5px 14px; border-radius: 20px;
+            text-transform: uppercase;
+        }
+        .pronto-numero {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px; font-weight: 400;
+            color: rgba(255,255,255,0.5); letter-spacing: 2px;
+        }
 
-        /* WHATSAPP */
-        .btn-ws { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; background: #075e54; border: none; border-radius: 8px; color: white; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; box-shadow: 0 4px 16px rgba(7,94,84,0.4); }
-        .btn-ws:active { background: #128c7e; }
-        .btn-ws svg { width: 20px; height: 20px; flex-shrink: 0; }
+        /* ─── DETALLE DESTINO ─── */
+        .foto-hero-det {
+            width: 100%; height: 300px; position: relative; overflow: hidden;
+        }
+        .foto-hero-det img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .foto-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(7,30,61,0.2) 0%, rgba(7,30,61,0.9) 100%);
+        }
+        .foto-hero-content {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 20px;
+        }
+        .det-tipo {
+            display: inline-block; background: var(--oro2); color: white;
+            font-size: 8px; font-weight: 700; letter-spacing: 2px;
+            padding: 4px 10px; border-radius: 3px; margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .det-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px; font-weight: 700; color: white; line-height: 1.1;
+        }
+        .det-lugar {
+            font-size: 11px; color: rgba(255,255,255,0.7);
+            font-weight: 400; margin-top: 5px; letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-        /* VOLVER */
-        .btn-volver { margin-top: 20px; background: none; border: 1px solid var(--border); color: var(--text2); padding: 11px 32px; border-radius: 6px; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 600; transition: border-color 0.2s, color 0.2s; }
-        .btn-volver:active { border-color: var(--purple); color: var(--purple); }
+        /* Cuerpo detalle */
+        .det-body { width: calc(100% - 32px); margin: 0 16px; }
 
-        /* PROCESO */
-        .proceso { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-        .paso { display: flex; align-items: flex-start; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
-        .paso-num { font-family: 'Bebas Neue', cursive; font-size: 28px; color: var(--purple); line-height: 1; flex-shrink: 0; text-shadow: 0 0 10px var(--purple-glow); }
-        .paso-info { display: flex; flex-direction: column; gap: 3px; }
-        .paso-titulo { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--text); text-transform: uppercase; }
-        .paso-desc { font-size: 10px; font-weight: 300; color: var(--text2); line-height: 1.5; }
+        .det-desc-card {
+            background: var(--card); border-radius: 14px;
+            padding: 20px; margin-top: 16px;
+            box-shadow: 0 3px 14px rgba(7,30,61,0.08);
+            border: 1px solid var(--border);
+        }
+        .det-card-label {
+            font-size: 9px; font-weight: 700; letter-spacing: 3px;
+            color: var(--oro2); text-transform: uppercase; margin-bottom: 8px;
+        }
+        .det-desc-txt {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px; font-weight: 400; color: var(--text2);
+            line-height: 1.9;
+        }
 
-        /* PIE */
-        .pie { width: 100%; text-align: center; padding-top: 20px; border-top: 1px solid var(--border); margin-top: 10px; }
-        .pie-nombre { font-family: 'Bebas Neue', cursive; font-size: 20px; letter-spacing: 5px; color: var(--purple); text-shadow: 0 0 10px var(--purple-glow); }
-        .pie-txt { font-size: 9px; color: var(--text2); letter-spacing: 2px; margin-top: 4px; }
+        .tags-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+        .tag-pill {
+            background: var(--azul-claro); color: var(--azul3);
+            font-size: 10px; font-weight: 600;
+            padding: 5px 13px; border-radius: 20px;
+        }
+        .tag-pill.gold { background: #FEF3C7; color: #92400E; }
+
+        .precio-card {
+            background: var(--azul); border-radius: 14px;
+            padding: 20px; margin-top: 12px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .precio-left {}
+        .precio-card-label {
+            font-size: 9px; font-weight: 700; letter-spacing: 3px;
+            color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 4px;
+        }
+        .precio-card-valor {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px; font-weight: 700; color: var(--oro3); line-height: 1;
+        }
+        .precio-card-nota {
+            font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 5px; font-weight: 400;
+        }
+
+        .btn-reservar {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; margin-top: 12px; padding: 16px;
+            background: linear-gradient(135deg, #075E54 0%, #25D366 100%);
+            color: white; border: none; border-radius: 12px;
+            font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            cursor: pointer; text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+            transition: transform 0.15s;
+        }
+        .btn-reservar:active { transform: scale(0.98); }
+
+        /* ─── WS CONTACTO ─── */
+        .ws-float {
+            width: calc(100% - 32px); margin: 0 16px;
+            background: linear-gradient(135deg, #075E54 0%, #25D366 100%);
+            border-radius: 16px; padding: 20px;
+            display: flex; align-items: center; gap: 16px;
+            text-decoration: none;
+            box-shadow: 0 6px 24px rgba(37,211,102,0.25);
+            transition: transform 0.15s;
+        }
+        .ws-float:active { transform: scale(0.97); }
+        .ws-title {
+            font-family: 'Raleway', sans-serif; font-weight: 800;
+            font-size: 16px; color: white;
+        }
+        .ws-sub { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 2px; font-weight: 400; }
+
+        /* ─── BTN VOLVER ─── */
+        .btn-back {
+            margin: 20px 16px 0; width: calc(100% - 32px);
+            background: transparent; border: 1px solid var(--border);
+            color: var(--text2); padding: 13px; border-radius: 10px;
+            font-family: 'Raleway', sans-serif; font-size: 11px;
+            font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.2s;
+        }
+        .btn-back:active { border-color: var(--azul); color: var(--azul); }
+
+        /* ─── PIE ─── */
+        .footer {
+            width: 100%; background: var(--azul);
+            padding: 32px 20px; text-align: center; margin-top: 40px;
+        }
+        .footer-brand {
+            font-family: 'Raleway', sans-serif; font-weight: 800;
+            font-size: 22px; letter-spacing: 7px; color: white;
+        }
+        .footer-brand span { color: var(--oro3); }
+        .footer-divider { width: 40px; height: 1px; background: var(--oro2); margin: 12px auto; }
+        .footer-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; font-size: 14px; color: rgba(255,255,255,0.4);
+        }
+        .footer-tel { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 8px; letter-spacing: 1px; }
+
+        .gap { height: 14px; }
+        .gap-sm { height: 8px; }
     </style>
 </head>
 <body>
 
-<!-- ══ MENÚ PRINCIPAL ══ -->
+<!-- ══════════════════════════
+     MENÚ PRINCIPAL
+══════════════════════════ -->
 <div id="pantalla-menu" class="pantalla activa">
-    <div class="cabecera">
-        <div class="logo-nombre">TWINS <span>SHOP</span></div>
-        <div class="logo-sub">Mugs personalizados · Bogotá</div>
-        <div class="linea-deco"></div>
+
+    <div class="header">
+        <div class="logo-wrap">
+            <span>🌍</span>
+            <p>LOGO</p>
+        </div>
+        <div class="header-brand">REALISMO <span>360</span></div>
+        <div class="header-tagline">Experiencias Reales</div>
+        <div class="header-divider"></div>
     </div>
 
-    <div class="grid-cats">
-        <div class="tarjeta-cat" onclick="mostrarPantalla('pantalla-espejo')">
-            <div class="cat-imagen"><img src="1.png" alt="MUG Tipo Espejo"></div>
-            <div class="cat-info">
-                <span class="cat-nombre">MUG TIPO ESPEJO</span>
-                <span class="cat-desc">5 colores · Personalizado</span>
-                <span class="cat-badge">DESDE $20.000</span>
-            </div>
-        </div>
-        <div class="tarjeta-cat proximamente">
-            <div class="cat-imagen">🤍</div>
-            <div class="cat-info">
-                <span class="cat-nombre">MUG BLANCO</span>
-                <span class="cat-desc">Próximamente</span>
-            </div>
-        </div>
-        <div class="tarjeta-cat proximamente">
-            <div class="cat-imagen">✨</div>
-            <div class="cat-info">
-                <span class="cat-nombre">MUG MÁGICO</span>
-                <span class="cat-desc">Próximamente</span>
-            </div>
-        </div>
-        <div class="tarjeta-cat proximamente">
-            <div class="cat-imagen">🎨</div>
-            <div class="cat-info">
-                <span class="cat-nombre">MUG DE COLOR</span>
-                <span class="cat-desc">Próximamente</span>
-            </div>
+    <!-- INTRO -->
+    <div class="intro-banner">
+        <div class="intro-icon">🗺️</div>
+        <div>
+            <div class="intro-title">¡Bienvenido a Realismo 360!</div>
+            <div class="intro-text">Descubre nuestros tours y experiencias auténticas en Colombia. Cada destino es una historia real que tú puedes vivir.</div>
         </div>
     </div>
 
-    <p style="font-family:'Bebas Neue',cursive; font-size:20px; letter-spacing:5px; color:var(--purple2); width:100%; margin-bottom:4px;">¿CÓMO FUNCIONA?</p>
-    <p style="font-size:9px; letter-spacing:3px; color:var(--text2); text-transform:uppercase; width:100%; margin-bottom:14px;">Proceso fácil en 4 pasos</p>
-    <div class="proceso">
-        <div class="paso"><span class="paso-num">01</span><div class="paso-info"><span class="paso-titulo">Elige tu mug</span><span class="paso-desc">Selecciona el color y estilo que más te guste.</span></div></div>
-        <div class="paso"><span class="paso-num">02</span><div class="paso-info"><span class="paso-titulo">Envíanos tu diseño</span><span class="paso-desc">Mándanos tu foto, logo o idea por WhatsApp.</span></div></div>
-        <div class="paso"><span class="paso-num">03</span><div class="paso-info"><span class="paso-titulo">Aprobamos el diseño</span><span class="paso-desc">Te enviamos una previsualización antes de imprimir.</span></div></div>
-        <div class="paso"><span class="paso-num">04</span><div class="paso-info"><span class="paso-titulo">Entrega y listo</span><span class="paso-desc">Recoge en Bogotá o coordinamos el envío.</span></div></div>
+    <!-- DESTINOS -->
+    <div class="section-head">
+        <div class="section-label">Tours Disponibles</div>
+        <div class="section-title">Nuestros Destinos</div>
     </div>
 
-    <div class="pie">
-        <div class="pie-nombre">TWINS SHOP</div>
-        <div class="pie-txt">Bogotá · Colombia · ☕ Mugs que cuentan historias</div>
-    </div>
-</div>
+    <div class="destinos-grid">
 
-<!-- ══ CATÁLOGO MUG TIPO ESPEJO ══ -->
-<div id="pantalla-espejo" class="pantalla">
-    <div class="cabecera">
-        <div class="logo-nombre">TWINS <span>SHOP</span></div>
-        <div class="logo-sub">Mugs personalizados · Bogotá</div>
-        <div class="linea-deco"></div>
-    </div>
-
-    <p class="titulo-pantalla">MUG TIPO ESPEJO</p>
-    <p class="subtitulo-pantalla">Selecciona un color para ver el detalle</p>
-
-    <!-- Foto todos los colores -->
-    <div class="foto-colores">
-        <img src="2.png" alt="Todos los colores disponibles">
-    </div>
-    <p class="colores-label">Colores disponibles: Azul · Rosa · Dorado · Plata · Bronce</p>
-
-    <!-- Grid de colores -->
-    <div class="grid-colores">
-
-        <div class="tarjeta-color" onclick="abrirDetalle('plata')">
-            <div class="color-foto"><img src="3.png" alt="MUG Plata"></div>
-            <div class="color-info">
-                <span class="color-nombre" style="color:#c0c0c0;">⚪ PLATA</span>
-                <span class="color-detalle">Ejemplo disponible</span>
-                <span class="color-precio">$20.000</span>
-            </div>
-        </div>
-
-        <div class="tarjeta-color" onclick="abrirDetalle('dorado')">
-            <div class="color-foto"><img src="4.png" alt="MUG Dorado"></div>
-            <div class="color-info">
-                <span class="color-nombre" style="color:#d4af37;">🥇 DORADO</span>
-                <span class="color-detalle">Ejemplo disponible</span>
-                <span class="color-precio">$20.000</span>
-            </div>
-        </div>
-
-        <div class="tarjeta-color sin-ejemplo" onclick="abrirDetalle('azul')">
-            <div class="color-foto">
-                <img src="5.png" alt="MUG Azul">
-            </div>
-            <div class="color-info">
-                <span class="color-nombre" style="color:#4a9eff;">🔵 AZUL</span>
-                <span class="color-detalle">Ejemplo disponible</span>
-                <span class="color-precio">$20.000</span>
-            </div>
-        </div>
-
-        <div class="tarjeta-color sin-ejemplo" onclick="abrirDetalle('rosa')">
-            <div class="color-foto">
-                <img src="6.png" alt="MUG Rosa">
-            </div>
-            <div class="color-info">
-                <span class="color-nombre" style="color:#ff6eb4;">🩷 ROSA</span>
-                <span class="color-detalle">Ejemplo disponible</span>
-                <span class="color-precio">$20.000</span>
-            </div>
-        </div>
-
-        <div class="tarjeta-color sin-ejemplo" onclick="abrirDetalle('bronce')">
-            <div class="color-foto">
-                <img src="7.png" alt="MUG Bronce">
-            </div>
-            <div class="color-info">
-                <span class="color-nombre" style="color:#cd7f32;">🥉 BRONCE</span>
-                <span class="color-detalle">Ejemplo disponible</span>
-                <span class="color-precio">$20.000</span>
-            </div>
-        </div>
-
-    </div>
-
-    <button class="btn-volver" onclick="mostrarPantalla('pantalla-menu')">← Volver al menú</button>
-</div>
-
-<!-- ══ DETALLE MUG ══ -->
-<div id="pantalla-detalle" class="pantalla">
-    <div class="cabecera">
-        <div class="logo-nombre">TWINS <span>SHOP</span></div>
-        <div class="logo-sub">Mugs personalizados · Bogotá</div>
-        <div class="linea-deco"></div>
-    </div>
-
-    <p class="titulo-pantalla" id="detalle-titulo"></p>
-    <p class="subtitulo-pantalla" id="detalle-sub"></p>
-
-    <div class="detalle-foto" id="detalle-foto-wrap">
-        <img id="detalle-img" src="" alt="MUG">
-    </div>
-
-    <div class="detalle-card">
-        <div class="detalle-card-titulo">DESCRIPCIÓN</div>
-        <p class="detalle-card-txt" id="detalle-desc"></p>
-        <span class="detalle-precio">$20.000</span>
-    </div>
-
-    <div class="detalle-card">
-        <div class="detalle-card-titulo">¿CÓMO PEDIRLO?</div>
-        <div class="instrucciones">
-            <div class="instruccion">
-                <span class="instruccion-num">01</span>
-                <div class="instruccion-info">
-                    <span class="instruccion-titulo">Nos mandas tu imagen</span>
-                    <span class="instruccion-desc">Envíanos por WhatsApp la foto, logo o diseño que quieres en tu mug.</span>
+        <!-- ── DESTINO 1: CHINGAZA (CON INFO) ── -->
+        <div class="destino-card" onclick="mostrarPantalla('pantalla-chingaza')">
+            <div class="destino-foto">
+                <img src="PORTADA%20(1).png" alt="Páramos de Chingaza">
+                <div class="destino-foto-overlay"></div>
+                <div class="destino-foto-content">
+                    <span class="destino-tipo">🏔️ Tour Naturaleza</span>
+                    <div class="destino-nombre">Páramos de Chingaza</div>
+                    <div class="destino-lugar">Reserva Manantial · Cundinamarca, Colombia</div>
                 </div>
             </div>
-            <div class="instruccion">
-                <span class="instruccion-num">02</span>
-                <div class="instruccion-info">
-                    <span class="instruccion-titulo">Aprobamos el diseño</span>
-                    <span class="instruccion-desc">Te enviamos una previsualización de cómo quedará antes de imprimir para tu aprobación.</span>
+            <div class="destino-footer">
+                <div>
+                    <div class="destino-precio-label">Desde</div>
+                    <div class="destino-precio-valor">$170.000</div>
                 </div>
+                <button class="btn-ver">Ver experiencia →</button>
             </div>
-            <div class="instruccion">
-                <span class="instruccion-num">03</span>
-                <div class="instruccion-info">
-                    <span class="instruccion-titulo">Confirmación y pago</span>
-                    <span class="instruccion-desc">Una vez aprobado el diseño confirmas tu pedido y realizas el pago de $20.000.</span>
-                </div>
-            </div>
-            <div class="instruccion">
-                <span class="instruccion-num">04</span>
-                <div class="instruccion-info">
-                    <span class="instruccion-titulo">¡Entrega y listo!</span>
-                    <span class="instruccion-desc">Recoge en Bogotá o coordinamos el envío a donde estés.</span>
+        </div>
+
+        <!-- ── DESTINOS 2–13: PRÓXIMAMENTE ── -->
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(2).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 02</span>
                 </div>
             </div>
         </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(3).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 03</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(4).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 04</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(5).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 05</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(6).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 06</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(7).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 07</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(8).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 08</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(9).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 09</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(10).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 10</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(11).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 11</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(12).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 12</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destino-pronto">
+            <div class="destino-pronto-foto">
+                <img src="PORTADA%20(13).png" alt="Próximo destino">
+                <div class="pronto-overlay">
+                    <span class="pronto-badge">Próximamente</span>
+                    <span class="pronto-numero">Destino 13</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <a class="btn-ws" id="detalle-ws" href="#" target="_blank">
-        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L0 24l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.737.98.998-3.648-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
-        Pedir por WhatsApp
+    <!-- CONTACTO -->
+    <div class="section-head">
+        <div class="section-label">Contáctanos</div>
+        <div class="section-title">Reserva tu Aventura</div>
+    </div>
+    <a class="ws-float" href="https://wa.me/573209962319?text=Hola!%20Vi%20el%20catálogo%20de%20Realismo%20360%20y%20quiero%20información%20sobre%20los%20tours%20🌍" target="_blank">
+        <span style="font-size:42px; flex-shrink:0;">📲</span>
+        <div>
+            <div class="ws-title">WhatsApp</div>
+            <div class="ws-sub">+57 320 996 2319 · Realismo 360</div>
+        </div>
     </a>
 
-    <button class="btn-volver" onclick="mostrarPantalla('pantalla-espejo')">← Volver a colores</button>
+    <div class="footer">
+        <div class="footer-brand">REALISMO <span>360</span></div>
+        <div class="footer-divider"></div>
+        <div class="footer-tag">Experiencias Reales · Colombia</div>
+        <div class="footer-tel">+57 320 996 2319</div>
+    </div>
+</div>
+
+<!-- ══════════════════════════
+     DETALLE — PÁRAMOS DE CHINGAZA
+══════════════════════════ -->
+<div id="pantalla-chingaza" class="pantalla">
+
+    <div class="sticky-top">
+        <button class="back-btn" onclick="mostrarPantalla('pantalla-menu')">←</button>
+        <span class="sticky-name">Páramos de Chingaza</span>
+        <button class="btn-ws-top" onclick="reservar('Páramos de Chingaza — Reserva Manantial', 170000)">📲 Reservar</button>
+    </div>
+
+    <!-- Foto hero -->
+    <div class="foto-hero-det">
+        <img src="PORTADA%20(1).png" alt="Páramos de Chingaza">
+        <div class="foto-hero-overlay"></div>
+        <div class="foto-hero-content">
+            <span class="det-tipo">🏔️ Tour · Solo Naturaleza</span>
+            <div class="det-titulo">Páramos de Chingaza</div>
+            <div class="det-lugar">Reserva Manantial · Cundinamarca</div>
+        </div>
+    </div>
+
+    <div class="det-body">
+
+        <!-- Descripción -->
+        <div class="det-desc-card">
+            <div class="det-card-label">Sobre esta experiencia</div>
+            <div class="det-desc-txt">Adéntrate en los majestuosos páramos de Chingaza, uno de los ecosistemas más biodiversos y estratégicos de Colombia. Recorre la Reserva Manantial y descubre paisajes únicos de alta montaña, frailejones milenarios, lagunas cristalinas y fauna silvestre en su hábitat natural. Una experiencia de conexión profunda con la naturaleza que difícilmente olvidarás.</div>
+            <div class="tags-row">
+                <span class="tag-pill">🏔️ Alta montaña</span>
+                <span class="tag-pill">🦌 Fauna silvestre</span>
+                <span class="tag-pill">🌿 Frailejones</span>
+                <span class="tag-pill">💧 Lagunas</span>
+                <span class="tag-pill gold">Solo Tour</span>
+            </div>
+        </div>
+
+        <!-- Precio -->
+        <div class="precio-card">
+            <div class="precio-left">
+                <div class="precio-card-label">Precio por persona</div>
+                <div class="precio-card-valor">$170.000</div>
+                <div class="precio-card-nota">No incluye tiquetes ni alojamiento</div>
+            </div>
+            <span style="font-size:44px;">🏔️</span>
+        </div>
+
+        <!-- Reservar -->
+        <a class="btn-reservar" href="https://wa.me/573209962319?text=Hola!%20Quiero%20reservar%20el%20tour%20a%20los%20Páramos%20de%20Chingaza%20—%20Reserva%20Manantial%20con%20Realismo%20360%20🏔️%20¿Me%20dan%20más%20información?" target="_blank">
+            <span>📲</span> Reservar por WhatsApp
+        </a>
+
+    </div>
+
+    <button class="btn-back" onclick="mostrarPantalla('pantalla-menu')">← Volver a destinos</button>
+
+    <div class="footer">
+        <div class="footer-brand">REALISMO <span>360</span></div>
+        <div class="footer-divider"></div>
+        <div class="footer-tag">Experiencias Reales · Colombia</div>
+    </div>
 </div>
 
 <script>
-    const WS = '573026203539';
-
-    const colores = {
-        plata:  { titulo: 'MUG ESPEJO · PLATA',  sub: 'Color Plata · 11 oz · Personalizado', img: '3.png', tieneEjemplo: true,  desc: 'Mug tipo espejo en acabado plateado de alta calidad. Su superficie reflectante le da un look premium y elegante a cualquier diseño personalizado. Perfecto para regalo o uso diario.' },
-        dorado: { titulo: 'MUG ESPEJO · DORADO', sub: 'Color Dorado · 11 oz · Personalizado', img: '4.png', tieneEjemplo: true,  desc: 'Mug tipo espejo en acabado dorado brillante. Un acabado lujoso que resalta cualquier diseño o foto personalizada. Ideal para regalar en ocasiones especiales.' },
-        azul:   { titulo: 'MUG ESPEJO · AZUL',   sub: 'Color Azul · 11 oz · Personalizado',   img: '5.png', tieneEjemplo: true,  desc: 'Mug tipo espejo en acabado azul metálico. Diseño elegante y moderno, personalizable con tu foto, logo o mensaje favorito.' },
-        rosa:   { titulo: 'MUG ESPEJO · ROSA',   sub: 'Color Rosa · 11 oz · Personalizado',   img: '6.png', tieneEjemplo: true,  desc: 'Mug tipo espejo en acabado rosado. Perfecto para regalar con un diseño romántico, nombre o foto especial.' },
-        bronce: { titulo: 'MUG ESPEJO · BRONCE', sub: 'Color Bronce · 11 oz · Personalizado', img: '7.png', tieneEjemplo: true,  desc: 'Mug tipo espejo en acabado bronce cálido. Un estilo vintage y sofisticado que le da carácter a cualquier diseño personalizado.' },
-    };
-
     function mostrarPantalla(id) {
         document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
         document.getElementById(id).classList.add('activa');
         window.scrollTo(0, 0);
     }
 
-    function abrirDetalle(color) {
-        const data = colores[color];
-        document.getElementById('detalle-titulo').textContent = data.titulo;
-        document.getElementById('detalle-sub').textContent = data.sub;
-        document.getElementById('detalle-desc').textContent = data.desc;
-
-        const fotoWrap = document.getElementById('detalle-foto-wrap');
-        const img = document.getElementById('detalle-img');
-        if (data.tieneEjemplo) {
-            img.src = data.img;
-            fotoWrap.style.display = 'block';
-        } else {
-            fotoWrap.style.display = 'none';
-        }
-
-        const msg = encodeURIComponent(`Hola! Me interesa pedir este mug: ${data.titulo} ☕ ¿Me puedes dar más información?`);
-        document.getElementById('detalle-ws').href = `https://wa.me/${WS}?text=${msg}`;
-        mostrarPantalla('pantalla-detalle');
+    function reservar(destino, precio) {
+        const msg = encodeURIComponent(`Hola! Quiero reservar el tour: ${destino} 🌍\nPrecio desde: $${precio.toLocaleString()}\n¿Me pueden dar más información?`);
+        window.open(`https://wa.me/573209962319?text=${msg}`, '_blank');
     }
 </script>
 </body>

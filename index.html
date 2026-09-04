@@ -234,6 +234,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
         .card-badge-type {
@@ -453,7 +454,7 @@
         <!-- HERO Y SECCIÓN QUIÉNES SOMOS -->
         <div class="hero-banner">
             <span class="hero-tag">✨ Agencia de Aventuras</span>
-            <div class="hero-title">Viajes que Conectan y Transforma</div>
+            <div class="hero-title">Viajes que Conectan y Transforman</div>
             
             <div class="about-card">
                 <div class="about-title">🌟 Quiénes Somos</div>
@@ -464,7 +465,7 @@
                     <div class="pillar-card">
                         <div class="pillar-icon">🇨🇴</div>
                         <div class="pillar-name">Nacionales</div>
-                        <div class="pillar-sub">Colombia autentica</div>
+                        <div class="pillar-sub">Colombia auténtica</div>
                     </div>
                     <div class="pillar-card">
                         <div class="pillar-icon">✈️</div>
@@ -486,10 +487,10 @@
             <button class="filter-btn">🇨🇴 Nacionales</button>
         </div>
 
-        <!-- TARJETA CAMINO A PERÚ -->
+        <!-- TARJETA 1: CAMINO A PERÚ -->
         <div class="destino-card" onclick="mostrarPantalla('pantalla-peru')">
             <div class="card-img-wrapper">
-                <img src="CAMINOPERU.jpg" alt="Camino a Perú">
+                <img src="CAMINOPERU.png" alt="Camino a Perú">
                 <span class="card-badge-type">🌎 Internacional</span>
                 <span class="card-badge-duration">6 Días / 5 Noches</span>
             </div>
@@ -506,10 +507,30 @@
             </div>
         </div>
 
+        <!-- TARJETA 2: TRAVESÍA SALAR DE UYUNI -->
+        <div class="destino-card" onclick="mostrarPantalla('pantalla-uyuni')">
+            <div class="card-img-wrapper">
+                <img src="UYUNI.jpg" alt="Travesía Salar de Uyuni">
+                <span class="card-badge-type">🌎 Internacional</span>
+                <span class="card-badge-duration">5 Días / 4 Noches</span>
+            </div>
+            <div class="card-content">
+                <div class="card-title">Travesía Salar de Uyuni</div>
+                <div class="card-location">📍 La Paz · Uyuni · Desierto de Siloli · Lagunas</div>
+                <div class="card-footer">
+                    <div>
+                        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; display: block;">Inversión</span>
+                        <div class="card-price-val">$2.600.000 <small style="font-size: 11px;">COP</small></div>
+                    </div>
+                    <button class="btn-card-action">Ver detalles →</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- ══════════════════════════
-         DETALLE: CAMINO A PERÚ
+         DETALLE 1: CAMINO A PERÚ
     ══════════════════════════ -->
     <div id="pantalla-peru" class="pantalla">
         
@@ -519,7 +540,7 @@
             <div style="width: 38px;"></div>
         </div>
 
-        <img src="CAMINOPERU.jpg" class="detail-hero-img" alt="Machu Picchu">
+        <img src="CAMINOPERU.png" class="detail-hero-img" alt="Machu Picchu">
 
         <div class="detail-body">
             
@@ -604,6 +625,115 @@
 
             <!-- BOTÓN RESERVA -->
             <a class="btn-reserve-cta" href="https://wa.me/573209962319?text=Hola!%20Quiero%20reservar%20el%20plan%20Camino%20a%20Per%C3%BA%20🇵🇪%20con%20Realismo%20360°" target="_blank">
+                📲 Reservar este viaje por WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ══════════════════════════
+         DETALLE 2: TRAVESÍA SALAR DE UYUNI
+    ══════════════════════════ -->
+    <div id="pantalla-uyuni" class="pantalla">
+        
+        <div class="sticky-detail-nav">
+            <button class="btn-back" onclick="mostrarPantalla('pantalla-menu')">←</button>
+            <span style="font-weight: 700; font-size: 14px;">Travesía Salar de Uyuni</span>
+            <div style="width: 38px;"></div>
+        </div>
+
+        <img src="UYUNI.jpg" class="detail-hero-img" alt="Salar de Uyuni">
+
+        <div class="detail-body">
+            
+            <div class="detail-card-main">
+                <span style="background: rgba(197, 160, 89, 0.15); color: var(--brand-gold); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">Donde el cielo se une con la tierra</span>
+                <div style="font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; margin: 8px 0;">Travesía Salar de Uyuni</div>
+                <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                    El Salar de Uyuni es la salina más grande del mundo (11.000 km² de sal blanca brillante). Recorreremos la ciudad de La Paz y nos adentraremos en el impresionante Salar y los desiertos bolivianos.
+                </div>
+
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); margin-bottom: 12px;">
+                    <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Inversión todo incluido</span>
+                    <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--brand-gold);">$2.600.000 COP <small style="font-size: 12px; color: white;">/ persona</small></div>
+                    <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">Punto de inicio: La Paz, Bolivia</span>
+                </div>
+
+                <div style="background: rgba(197, 160, 89, 0.1); border: 1px dashed var(--brand-gold); padding: 12px; border-radius: 12px; font-size: 12px;">
+                    💡 <strong>Plan de pagos flexible:</strong> Separa con <strong>$500.000 COP</strong> y paga el resto en cuotas hasta una semana antes del viaje. ¡Pregunta por descuentos especiales para grupos!
+                </div>
+            </div>
+
+            <!-- INCLUIDO -->
+            <div class="info-box">
+                <div class="info-box-title">✨ ¿Qué incluye el plan?</div>
+                <div class="list-grid">
+                    <div class="list-item">🏘️ Alojamiento: 2 Noches en Hotel + 2 Noches en Bus Cama</div>
+                    <div class="list-item">🍛 Alimentación: 3 Desayunos y 3 Almuerzos</div>
+                    <div class="list-item">🛻 Transportes internos desde el aeropuerto</div>
+                    <div class="list-item">🏙️ City Tour en La Paz + 🚠 Entrada al Teleférico</div>
+                    <div class="list-item">🏜️ Tour completo Salar de Uyuni (3 días) y atractivos</div>
+                    <div class="list-item">💳 Póliza de Seguros de asistencia médica</div>
+                    <div class="list-item">🏞️ Acompañamiento de Guía local certificado</div>
+                </div>
+            </div>
+
+            <!-- ITINERARIO -->
+            <div class="info-box">
+                <div class="info-box-title">📅 Itinerario Detallado (5 Días / 4 Noches)</div>
+                
+                <div class="day-item">
+                    <div class="day-number">Día 1: Llegada a La Paz & City Tour</div>
+                    <div class="day-text">Llegada a La Paz, recepción y City Tour guiado por sus principales atractivos. Por la noche, traslado en Bus Cama hacia Uyuni.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 2: Cementerio de Trenes, Salar & Atardecer</div>
+                    <div class="day-text">Desayuno (10:30 AM). Visita al Cementerio de Trenes, Colchani (artesanías y procesadora de sal), Ojos del Salar, Hotel de Sal Playa Blanca (Plaza de Banderas, monumento al Dakar), sesión de fotos perspectiva, Isla Inca Huasi (valle de cactus) y atardecer en el salar. Arribo al hostal de sal, cena y mate.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 3: Lagunas Altoandinas, Desierto & Árbol de Piedra</div>
+                    <div class="day-text">07:00 AM. Salida hacia el Salar de Chiguana, mirador Volcán Ollagüe, Lagunas Cañapa, Hedionda (flamencos), Charcota y Honda. Mirador desierto de Siloli, Árbol de Piedra e ingreso al Parque Nacional hacia la Laguna Colorada. Arribo al hostal, cena y mate.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 4: Géisers, Termas, Desierto Dalí & Retorno</div>
+                    <div class="day-text">05:00 AM. Visita a los géisers Sol de Mañana, Aguas Termales de Polques, Desierto Salvador Dalí y Laguna Verde (Opcional transfer a San Pedro de Atacama 09:00 AM). Retorno haciendo paradas en Villa Mar (almuerzo), Valle de Rocas y San Cristóbal. Llegada a Uyuni 06:00 PM y viaje de regreso a La Paz.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 5: Teleférico Panorámico & Vuelo</div>
+                    <div class="day-text">Desayuno. Recorrido panorámico en el famoso Teleférico de La Paz con vista a los nevados. Almuerzo y traslado al aeropuerto para tu vuelo de regreso.</div>
+                </div>
+            </div>
+
+            <!-- QUÉ LLEVAR Y RECOMENDACIONES -->
+            <div class="info-box">
+                <div class="info-box-title">🎒 ¿Qué debes llevar?</div>
+                <div class="list-grid">
+                    <div class="list-item">📗 Documento de Identidad original (Pasaporte o Cédula vigente)</div>
+                    <div class="list-item">🧥 Ropa cómoda y de abrigo térmico para clima muy frío (5 días)</div>
+                    <div class="list-item">🧤 Guantes, gorra para el frío, linterna y chaqueta impermeable</div>
+                    <div class="list-item">🧢 Gorra de sol, bloqueador solar y repelente de insectos</div>
+                    <div class="list-item">🎒 Morral pequeño de doble tira para excursiones diarias</div>
+                    <div class="list-item">💵 Dinero en efectivo para imprevistos y gastos personales</div>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN IMPORTANTE Y PAGOS -->
+            <div class="info-box">
+                <div class="info-box-title">💳 Medios de Pago & Reserva</div>
+                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+                    • <strong>Nequi:</strong> 3209962319<br>
+                    • <strong>Daviplata:</strong> 3209962319<br><br>
+                    <small>⚠️ <strong>Nota:</strong> Nivel de confort de la aventura: Bajo/Aventura. Los cupos son limitados. Una vez realizado el abono o pago no hay devoluciones ni cambios de fecha (cupo personal e intransferible).</small>
+                </div>
+            </div>
+
+            <!-- BOTÓN RESERVA -->
+            <a class="btn-reserve-cta" href="https://wa.me/573209962319?text=Hola!%20Quiero%20reservar%20la%20Traves%C3%ADa%20Salar%20de%20Uyuni%20🇧🇴%20con%20Realismo%20360°" target="_blank">
                 📲 Reservar este viaje por WhatsApp
             </a>
 

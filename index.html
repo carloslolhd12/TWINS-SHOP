@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Realismo 360° — Experiencias que Transforman</title>
+    <meta property="og:title" content="Realismo 360° — Experiencias que Transforman">
+    <meta property="og:description" content="Turismo de naturaleza y aventuras auténticas en Colombia y el Mundo.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-body: #0A111E;               /* Azul oscuro profundo */
+            --bg-card: #131E30;               /* Azul marino tarjetas */
+            --bg-surface: #1E2D4A;            /* Azul medio interactivo */
+            --brand-gold: #C5A059;            /* Dorado oficial del logo */
+            --brand-gold-glow: rgba(197, 160, 89, 0.25);
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-light: rgba(197, 160, 89, 0.2);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background-color: #030712;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-wrapper {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-body);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+        }
+
+        .pantalla { display: none; }
+        .pantalla.activa { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── HEADER ─── */
+        .top-header {
+            background: rgba(10, 17, 30, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+        }
+
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .brand-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .brand-title span { color: var(--brand-gold); }
+        .brand-subtitle { font-size: 10px; color: var(--brand-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+
+        /* ─── HERO & QUIÉNES SOMOS ─── */
+        .hero-banner {
+            padding: 24px 20px 20px;
+            background: linear-gradient(180deg, rgba(197, 160, 89, 0.12) 0%, transparent 100%);
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--brand-gold);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .hero-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .about-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--brand-gold);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .pillar-card {
+            background: var(--bg-surface);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pillar-icon { font-size: 18px; margin-bottom: 4px; }
+        .pillar-name { font-size: 12px; font-weight: 700; color: var(--text-main); }
+        .pillar-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+        /* ─── FILTROS Y CONTENEDOR ─── */
+        .section-header {
+            padding: 20px 20px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 8px;
+            padding: 0 20px 16px;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: var(--brand-gold);
+            color: #0A111E;
+            font-weight: 800;
+            border-color: var(--brand-gold);
+        }
+
+        /* ─── TARJETAS DE DESTINO ─── */
+        .destino-card {
+            margin: 0 20px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .destino-card:active { transform: scale(0.98); }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 230px;
+            width: 100%;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge-type {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(10, 17, 30, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--brand-gold);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            text-transform: uppercase;
+        }
+
+        .card-badge-duration {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            background: rgba(10, 17, 30, 0.85);
+            backdrop-filter: blur(8px);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .card-content { padding: 18px; }
+
+        .card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .card-location { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; display: flex; align-items: center; gap: 4px; }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .card-price-val {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-gold);
+        }
+
+        .btn-card-action {
+            background: var(--brand-gold);
+            color: #0A111E;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        /* ─── VISTA DETALLE ─── */
+        .sticky-detail-nav {
+            position: sticky;
+            top: 0;
+            z-index: 110;
+            background: rgba(10, 17, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .btn-back {
+            background: var(--bg-surface);
+            border: none;
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .detail-hero-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .detail-body { padding: 20px; }
+
+        .detail-card-main {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            margin-top: -40px;
+            position: relative;
+            border: 1px solid var(--border-light);
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        .info-box-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            color: var(--brand-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .list-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+        .list-item {
+            background: var(--bg-surface);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .day-item {
+            border-left: 3px solid var(--brand-gold);
+            background: var(--bg-surface);
+            padding: 12px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .day-number { font-size: 12px; font-weight: 800; color: var(--brand-gold); margin-bottom: 2px; }
+        .day-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+        /* ─── BOTÓN FLOTANTE WHATSAPP ─── */
+        .ws-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 200;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .ws-float:active { transform: scale(0.9); }
+
+        .btn-reserve-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- BOTÓN WHATSAPP FLOTANTE PERMANENTE -->
+    <a href="https://wa.me/573209962319?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20viajes%20y%20experiencias%20🌍" target="_blank" class="ws-float">
+        📲
+    </a>
+
+    <!-- ══════════════════════════
+         MENÚ PRINCIPAL
+    ══════════════════════════ -->
+    <div id="pantalla-menu" class="pantalla activa">
+        
+        <!-- HEADER CON LOGO OFICIAL -->
+        <div class="top-header">
+            <div class="brand-container">
+                <div class="logo-box">
+                    <img src="logo.jpg" alt="Realismo 360°">
+                </div>
+                <div>
+                    <div class="brand-title">REALISMO <span>360°</span></div>
+                    <div class="brand-subtitle">Experiencias que transforman</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO Y SECCIÓN QUIÉNES SOMOS -->
+        <div class="hero-banner">
+            <span class="hero-tag">✨ Agencia de Aventuras</span>
+            <div class="hero-title">Viajes que Conectan y Transforma</div>
+            
+            <div class="about-card">
+                <div class="about-title">🌟 Quiénes Somos</div>
+                <div class="hero-description">
+                    Ofrecemos turismo de naturaleza y aventuras auténticas en Colombia y el Mundo, conectándote con paisajes extraordinarios, culturas, comunidades y destinos inolvidables.
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🇨🇴</div>
+                        <div class="pillar-name">Nacionales</div>
+                        <div class="pillar-sub">Colombia autentica</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">✈️</div>
+                        <div class="pillar-name">Internacionales</div>
+                        <div class="pillar-sub">Destinos globales</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESTINOS -->
+        <div class="section-header">
+            <div class="section-title">Próximos Viajes</div>
+        </div>
+
+        <div class="filters-row">
+            <button class="filter-btn active">Todos los viajes</button>
+            <button class="filter-btn">🌎 Internacionales</button>
+            <button class="filter-btn">🇨🇴 Nacionales</button>
+        </div>
+
+        <!-- TARJETA CAMINO A PERÚ -->
+        <div class="destino-card" onclick="mostrarPantalla('pantalla-peru')">
+            <div class="card-img-wrapper">
+                <img src="CAMINOPERU.jpg" alt="Camino a Perú">
+                <span class="card-badge-type">🌎 Internacional</span>
+                <span class="card-badge-duration">6 Días / 5 Noches</span>
+            </div>
+            <div class="card-content">
+                <div class="card-title">Camino a Perú</div>
+                <div class="card-location">📍 Cusco · Machu Picchu · Humantay · Vinicunca</div>
+                <div class="card-footer">
+                    <div>
+                        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; display: block;">Inversión</span>
+                        <div class="card-price-val">$3.000.000 <small style="font-size: 11px;">COP</small></div>
+                    </div>
+                    <button class="btn-card-action">Ver detalles →</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ══════════════════════════
+         DETALLE: CAMINO A PERÚ
+    ══════════════════════════ -->
+    <div id="pantalla-peru" class="pantalla">
+        
+        <div class="sticky-detail-nav">
+            <button class="btn-back" onclick="mostrarPantalla('pantalla-menu')">←</button>
+            <span style="font-weight: 700; font-size: 14px;">Camino a Perú</span>
+            <div style="width: 38px;"></div>
+        </div>
+
+        <img src="CAMINOPERU.jpg" class="detail-hero-img" alt="Machu Picchu">
+
+        <div class="detail-body">
+            
+            <div class="detail-card-main">
+                <span style="background: rgba(197, 160, 89, 0.15); color: var(--brand-gold); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">Salidas Semanales desde Colombia</span>
+                <div style="font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; margin: 8px 0;">Camino a Perú</div>
+                <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                    Emprende un viaje inolvidable a una de las culturas más antiguas de Latinoamérica. Recorreremos sitios arqueológicos, el Valle Sagrado, Machu Picchu, la Laguna Humantay y la Montaña de 7 Colores.
+                </div>
+
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Precio por persona</span>
+                        <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--brand-gold);">$3.000.000 COP</div>
+                    </div>
+                    <span style="font-size: 11px; background: rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 8px;">Desde Cusco</span>
+                </div>
+            </div>
+
+            <!-- INCLUIDO -->
+            <div class="info-box">
+                <div class="info-box-title">🍲 ¿Qué incluye el plan?</div>
+                <div class="list-grid">
+                    <div class="list-item">🥣 5 Desayunos y 4 Almuerzos</div>
+                    <div class="list-item">🚐 Transportes internos desde Cusco</div>
+                    <div class="list-item">🧔 Guías locales expertos</div>
+                    <div class="list-item">🏢 Hospedaje (5 Noches)</div>
+                    <div class="list-item">🎟️ Todos los derechos de ingreso</div>
+                    <div class="list-item">🚆 Tickets de Tren Inca Rail Voyager</div>
+                    <div class="list-item">🧾 Seguros de asistencia médica</div>
+                </div>
+            </div>
+
+            <!-- ATRACTIVOS -->
+            <div class="info-box">
+                <div class="info-box-title">🏛️ Atractivos incluidos</div>
+                <div class="list-grid">
+                    <div class="list-item">📍 City Tour Cusco & Qorikancha</div>
+                    <div class="list-item">📍 Fortaleza de Sacsayhuamán</div>
+                    <div class="list-item">📍 Valle Sagrado de los Incas</div>
+                    <div class="list-item">📍 Ollantaytambo</div>
+                    <div class="list-item">📍 Ciudadela de Machu Picchu</div>
+                    <div class="list-item">📍 Laguna de Humantay</div>
+                    <div class="list-item">📍 Montaña de 7 Colores (Vinicunca)</div>
+                </div>
+            </div>
+
+            <!-- ITINERARIO -->
+            <div class="info-box">
+                <div class="info-box-title">📅 Itinerario (6 Días / 5 Noches)</div>
+                
+                <div class="day-item">
+                    <div class="day-number">Día 1: Llegada a Cusco y City Tour</div>
+                    <div class="day-text">Recogida en el aeropuerto, check-in en el hotel. Por la tarde, recorrido guiado por la ciudad y sitios arqueológicos cercanos.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 2: Valle Sagrado y Aguas Calientes</div>
+                    <div class="day-text">Recorrido por el Valle Sagrado, Ollantaytambo y la Puerta del Sol (Inti Punku). Traslado en tren Inca Rail a Aguas Calientes.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 3: Machu Picchu y Retorno a Cusco</div>
+                    <div class="day-text">Visita guiada por la mítica ciudadela de Machu Picchu. Retorno en tren a Ollantaytambo y traslado terrestre a Cusco.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 4: Trekking a la Laguna Humantay</div>
+                    <div class="day-text">Excursión de senderismo hacia el nevado y la espectacular laguna turquesa Humantay. Retorno por la tarde.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 5: Montaña de 7 Colores (Vinicunca)</div>
+                    <div class="day-text">Ascenso a la famosa Montaña de los Siete Colores. Retorno a Cusco en la tarde.</div>
+                </div>
+
+                <div class="day-item">
+                    <div class="day-number">Día 6: Mañana Libre y Vuelo de Regreso</div>
+                    <div class="day-text">Tiempo libre para compras de recuerdos y traslado al aeropuerto para el viaje de regreso.</div>
+                </div>
+            </div>
+
+            <!-- BOTÓN RESERVA -->
+            <a class="btn-reserve-cta" href="https://wa.me/573209962319?text=Hola!%20Quiero%20reservar%20el%20plan%20Camino%20a%20Per%C3%BA%20🇵🇪%20con%20Realismo%20360°" target="_blank">
+                📲 Reservar este viaje por WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function mostrarPantalla(id) {
+        document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+        document.getElementById(id).classList.add('activa');
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
